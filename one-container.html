@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Angela's Webpage</title>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Playwrite+AU+NSW:wght@100..400&display=swap');
+      
+      * {
+        background-color: #f8eedb;
+        margin: 0;
+        padding: 0;
+      }
+
+      .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      img {
+        height: 400px;
+        width: 400px;
+        object-fit: cover;
+        border-radius: 50%;
+        margin: 20px 0;
+      }
+
+      nav {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        margin-bottom: 30px;
+      }
+
+      .content {
+        width: 798px;
+        min-height: 400px;
+        background-color: rgb(84, 64, 13);
+        border-radius: 41px 41px 0px 0px;
+        color: #8A9A5B;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px 0;
+      }
+
+      header h1 {
+        font-family: "Playfair Display", serif;
+        font-size: 36px;
+        color: #8A9A5B;
+        background-color: rgb(84, 64, 13);
+        text-align: center;
+      }
+
+      .about-text {
+        font-family: "Playfair Display", serif;
+        color: #8A9A5B;
+        background-color: rgb(84, 64, 13);
+        text-align: center;
+        padding: 20px;
+        max-width: 600px;
+        line-height: 1.6;
+      }
+
+      a button {
+        background-color: #8A9A5B;
+        color: black;
+        font-family: "Playfair Display", serif;
+        width: 183px;
+        height: 87px;
+        border-radius: 25px;
+        text-align: center;
+        border: none;
+        font-style: italic;
+        font-size: 20px;
+        font-weight: 400; 
+        text-transform: lowercase;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      a:hover button {
+        color: #FFFFFF;
+        font-weight: 800; 
+        letter-spacing: 3px;
+      }
+
+      a:active button {  
+        background-color: rgb(84, 64, 13);
+        color: #8A9A5B;   
+        border: 1px solid #8A9A5B;
+      }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <img src="./butterfly.jpg" id="butterfly-picture" alt="A picture of a pink butterfly">
+        
+        <nav id="navigation">
+           <a href="#about"><button>About</button></a>
+           <a href="#why"><button>Why</button></a>
+           <a href="#Contact"><button>Contact</button></a>
+        </nav>
+
+        <section class="content">
+            <header id="welcome">
+                <h1>.ೃ࿐ Welcome to my page! .ೃ࿐</h1>
+            </header>
+
+            <div class="about-text">
+                Hello! My name is Angela. I am currently a senior studying Computer Science. I love to draw, mostly digitally, play videogames, and read (currently read: A good girl's guide to murder)! My main goal is to work in the aerospace industry as an engineer. Specifically with astronautical robotics.
+            </div>
+        </section>
+    </div>
+</body>
+</html>
