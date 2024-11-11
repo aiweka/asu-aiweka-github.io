@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Blog</title>
+  <style>
+    /* Overall page styling */
+    body {
+      background-color: #f5f2e8;
+      color: #5b4238;
+      font-family: 'Georgia', serif;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+      position: relative;
+    }
+
+    /* Spiral animations */
+    .spiral {
+      width: 100px;
+      height: 100px;
+      position: fixed;
+      pointer-events: none;
+    }
+
+    .spiral::before {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border: 4px solid transparent;
+      border-top-color: #5b4238;
+      border-radius: 50%;
+      animation: spiral 4s linear infinite;
+    }
+
+    .spiral-top-left {
+      top: 20px;
+      left: 20px;
+    }
+
+    .spiral-top-right {
+      top: 20px;
+      right: 20px;
+    }
+
+    @keyframes spiral {
+      0% {
+        transform: rotate(0deg) scale(0.1);
+        opacity: 0.8;
+      }
+      50% {
+        transform: rotate(360deg) scale(1);
+        opacity: 0.5;
+      }
+      100% {
+        transform: rotate(720deg) scale(0.1);
+        opacity: 0.8;
+      }
+    }
+
+    /* Outer frame */
+    .outer-frame {
+      border: 5px dotted #718b5a;
+      padding: 10px;
+      margin: 20px;
+    }
+
+    /* Content frame */
+    .content-frame {
+      border: 3px dotted #718b5a;
+      padding: 20px;
+      background-color: #f5f2e8;
+    }
+
+    /* Butterfly icon and header styling */
+    .header {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .butterfly-icon {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      display: block;
+      margin: 0 auto;
+      object-fit: cover;
+    }
+
+    h1 {
+      font-size: 2.5em;
+      color: #718b5a;
+      margin-top: 10px;
+      font-family: 'Georgia', serif;
+      opacity: 0;
+      animation: fadeIn 2s forwards;
+    }
+
+    h2 {
+      font-size: 1.8em;
+      color: #718b5a;
+      margin-top: 30px;
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+      }
+    }
+
+    p {
+      opacity: 0;
+      animation: fadeInText 1.5s forwards;
+      animation-delay: 0.5s;
+      margin-top: 15px;
+    }
+
+    @keyframes fadeInText {
+      to {
+        opacity: 1;
+      }
+    }
+
+    /* Navigation links styling */
+    .nav-links {
+      margin-top: 20px;
+    }
+
+    .nav-links a {
+      font-size: 1.2em;
+      color: #ffffff;
+      background-color: #718b5a;
+      padding: 10px 20px;
+      margin: 0 15px;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+    }
+
+    .nav-links a:hover {
+      background-color: #a2c48f;
+      transform: scale(1.05);
+      box-shadow: 0 0 10px rgba(113, 139, 90, 0.5);
+    }
+
+    /* About Me Section Styling */
+    .about-me-frame {
+      border: 3px dotted #718b5a;
+      padding: 30px;
+      margin-top: 60px;
+      margin-bottom: 60px;
+      background-color: #f5f2e8;
+    }
+
+    /* Additional margin for scrolling effect */
+    .spacer {
+      margin-bottom: 60px;
+    }
+
+    /* Decoration styles */
+    .decoration-bunnies, .decoration-butterfly {
+      font-size: 1.5em;
+      color: #5b4238;
+      margin-top: 20px;
+    }
+
+    .decoration-bunnies:before {
+      content: "⸰˚🐇˚⸰ ";
+    }
+
+    .decoration-butterfly:before {
+      content: ".ೃ࿐ ";
+    }
+
+    .decoration-butterfly:after {
+      content: " .ೃ࿐";
+    }
+  </style>
+</head>
+<body>
+  <!-- Spiral animations -->
+  <div class="spiral spiral-top-left"></div>
+  <div class="spiral spiral-top-right"></div>
+
+  <div class="outer-frame">
+    <div class="content-frame">
+      <!-- Butterfly Icon -->
+      <div class="header">
+        <img src="butterfly.jpg" alt="Butterfly Icon" class="butterfly-icon">
+        <h1 class="fade-in">.ೃ࿐ Welcome to my blog! .ೃ࿐</h1>
+      </div>
+      
+      <!-- Navigation Links -->
+      <div class="nav-links">
+        <a href="https://www.youtube.com/channel/UCiKxQx4KdX-s903aZMDj7Hg" target="_blank">My Favorite Artist</a>
+        <a href="https://youtu.be/K8JPS7xDGFU?si=bOw2BHyTN_U7bPMH" target="_blank">My Favorite Game</a>
+        <a href="https://www.nationalgeographic.com/animals/mammals/facts/white-tailed-deer" target="_blank">My Favorite Animal</a>
+      </div>
+      
+      <!-- About Me Section -->
+      <section class="about-me-frame">
+        <h2 class="decoration-bunnies">About Me</h2>
+        <p>Hello! My name is Angela. I am currently a senior studying Computer Science. I love to draw, mostly digitally, play video games, and read. My main goal is to work in the aerospace industry as an engineer, specifically with astronautical robotics.</p>
+      </section>
+      
+      <div class="spacer"></div>
+
+      <!-- Passion Section -->
+      <section class="about-me-frame">
+        <h2 class="decoration-bunnies">Astronautics & Space Travel</h2>
+        <p>I am deeply passionate about astronautics and the potential for space travel. Exploring the universe and understanding what lies beyond our planet has been a lifelong dream. The idea of contributing to humanity's journey through space fuels my studies and aspirations.</p>
+      </section>
+      
+      <div class="spacer"></div>
+
+      <!-- Adrienne Lenker's Music Section -->
+      <section class="about-me-frame">
+        <h2 class="decoration-bunnies">My Love for Adrienne Lenker's Music</h2>
+        <p>Adrienne Lenker's music resonates with me on a profound level. Her lyrics and melodies convey emotions and thoughts that mirror my own. Her music provides a sense of connection and reflection that I deeply cherish.</p>
+      </section>
+    </div>
+  </div>
+</body>
+</html>
