@@ -1,0 +1,251 @@
+/* Basic reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'MS Sans Serif', Arial, sans-serif;
+  background-color: #008080;
+  overflow: hidden;
+  height: 100vh;
+}
+
+/* Start Screen */
+#start-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #5dbde3;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.start-content h1 {
+  font-size: 48px;
+  margin-bottom: 20px;
+}
+
+#enter-button {
+  padding: 10px 20px;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+
+/* Desktop Icons */
+
+.desktop-icon {
+  text-align: center;
+  cursor: pointer;
+  width: 60px; /* Reduced from 80px */
+  margin-bottom: 8px; /* Reduced from 10px */
+}
+
+.system-emoji, .whale-emoji {
+  font-size: 36px; /* Reduced from 48px */
+  display: block;
+  margin-bottom: 4px; /* Reduced from 5px */
+}
+
+.desktop-icon span:last-child {
+  display: block;
+  text-align: center;
+  white-space: wrap;
+  font-size: 10px; /* Reduced from 12px */
+  color: white;
+  text-shadow: 1px 1px 1px black;
+  width: 60px; /* Reduced from 80px to match the icon width */
+  word-wrap: break-word;
+}
+
+
+/* Taskbar */
+#taskbar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 32px;
+  background: #c0c0c0;
+  border-top: 1px solid #ffffff;
+  display: flex;
+  align-items: center;
+  padding: 0 2px;
+  box-shadow: inset 0 1px #dfdfdf, 0 -1px #808080;
+}
+
+#start-button {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 2px 8px;
+  height: 28px;
+  margin: 2px;
+  background: #c0c0c0;
+  border: 1px solid #e22b2b;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+#start-button .system-emoji {
+  font-size: 20px;
+  margin: 0;
+}
+
+#quick-launch {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 10px;
+  border-right: 1px solid #808080;
+}
+
+.taskbar-icon {
+  font-size: 20px;
+  cursor: pointer;
+}
+
+#running-programs {
+  flex: 1;
+  display: flex;
+  gap: 2px;
+  padding: 0 4px;
+}
+
+.taskbar-program {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 2px 8px;
+  background: #c0c0c0;
+  border: 1px solid #808080;
+  min-width: 150px;
+  cursor: pointer;
+}
+
+.taskbar-program.active {
+  background: #dfdfdf;
+  border-top-color: #ffffff;
+  border-left-color: #ffffff;
+}
+
+.taskbar-program .system-emoji {
+  font-size: 16px;
+  margin: 0;
+}
+
+#system-tray {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 10px;
+  border-left: 1px solid #808080;
+}
+
+.tray-icon {
+  font-size: 16px;
+}
+
+#clock {
+  font-size: 12px;
+  min-width: 60px;
+  text-align: center;
+}
+
+/* Bouncing whale animation */
+.bouncing-whale {
+  display: inline-block;
+  animation: bounce 1s infinite;
+  margin-left: 10px;
+  font-size: 64px;
+}
+
+@keyframes bounce {
+  0%, 100% {
+      transform: translateY(0);
+  }
+  50% {
+      transform: translateY(-10px);
+  }
+}
+
+/* Window styles */
+.window {
+  position: absolute;
+  background: #c0c0c0;
+  border: 1px solid #dfdfdf;
+  box-shadow: 1px 1px 0 #000000;
+  min-width: 200px;
+  min-height: 100px;
+}
+
+.title-bar {
+  background: #000080;
+  color: white;
+  padding: 2px 4px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.window-content {
+  padding: 10px;
+}
+
+/* Focus styles */
+.desktop-icon:focus {
+  outline: 1px dotted white;
+}
+.window {
+  width: 400px;
+  min-height: 300px;
+}
+
+.window.active .title-bar {
+  background: #000080;
+}
+
+.window:not(.active) .title-bar {
+  background: #808080;
+}
+
+.whale-info img {
+  display: block;
+  margin: 10px auto;
+}
+
+.whale-info h2, .whale-info h3 {
+  margin: 10px 0;
+}
+
+.whale-info ul {
+  margin-left: 20px;
+  margin-bottom: 15px;
+}
+
+.whale-info li {
+  margin: 5px 0;
+}
+[aria-label="Close"] {
+  background: #e61c1c;
+  border: 1px solid #ffffff;
+  border-right-color: #ca1a1a;
+  border-bottom-color: #000000;
+  padding: 0 5px;
+  font-size: 12px;
+  line-height: 14px;
+  margin-left: 2px;
+}
+
+[aria-label="Close"]:active {
+  border: 1px solid #000000;
+  border-right-color: #ffffff;
+  border-bottom-color: #ffffff;
+}
