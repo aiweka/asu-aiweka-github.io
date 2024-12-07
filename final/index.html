@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Win98 Whale Encyclopedia</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Start Screen -->
+    <div id="start-screen">
+        <div class="start-content">
+            <h1>WhaleOS XP <span class="bouncing-whale">🐋</span></h1>
+            <button id="enter-button">Enter</button>
+        </div>
+    </div>
+    <!-- Desktop -->
+    <div id="desktop" class="hidden">
+        <!-- Desktop Icons -->
+        <div class="desktop-icons">
+            <div class="desktop-icon" data-program="my-computer">
+                <span class="system-emoji">💻</span>
+                <span>My Computer</span>
+            </div>
+            <div class="desktop-icon" data-program="documents">
+                <span class="system-emoji">📄</span>
+                <span>My Documents</span>
+            </div>
+            <div class="desktop-icon" data-program="recyclebin">
+                <span class="system-emoji">🗑️</span>
+                <span>Recycle Bin</span>
+            </div>
+            <div class="desktop-icon" data-program="notepad">
+                <span class="system-emoji">📝</span>
+                <span>Notepad</span>
+            </div>
+            <div class="desktop-icon whale-file" data-whale="blue">
+                <span class="whale-emoji">🐋</span>
+                <span>Blue Whale.exe</span>
+            </div>
+            <div class="desktop-icon whale-file" data-whale="orca">
+                <span class="whale-emoji">🐳</span>
+                <span>Orca.exe</span>
+            </div>
+            <div class="desktop-icon whale-file" data-whale="humpback">
+                <span class="whale-emoji">🐋</span>
+                <span>Humpback.exe</span>
+            </div>
+            <div class="desktop-icon">
+                <span class="system-emoji">📁</span>
+                <span>Homework</span>
+            </div>
+            <div class="desktop-icon">
+                <span class="system-emoji">📁</span>
+                <span>Vacation Pics</span>
+            </div>
+            <div class="desktop-icon">
+                <span class="system-emoji">📁</span>
+                <span>New Folder</span>
+            </div>
+            <div class="desktop-icon">
+                <span class="system-emoji">📁</span>
+                <span>stuff</span>
+            </div>
+            <div class="desktop-icon">
+                <span class="system-emoji">🎮</span>
+                <span>Games</span>
+            </div>
+            <div class="desktop-icon">
+                <span class="system-emoji">📂</span>
+                <span>Downloads</span>
+            </div>
+            <div class="desktop-icon">
+                <span class="system-emoji">🎵</span>
+                <span>Music</span>
+            </div>
+        </div>
+        <!-- Taskbar -->
+        <div id="taskbar">
+            <div id="start-button">
+                <span class="system-emoji">🪟</span>
+                Start
+            </div>
+            <div id="quick-launch">
+                <span class="taskbar-icon" title="Internet Explorer">🌐</span>
+                <span class="taskbar-icon" title="Email">📧</span>
+                <span class="taskbar-icon" title="My Documents">📁</span>
+            </div>
+            <div id="running-programs">
+                <div class="taskbar-program active">
+                    <span class="system-emoji">📝</span>
+                    Untitled - Notepad
+                </div>
+                <div class="taskbar-program">
+                    <span class="system-emoji">💻</span>
+                    My Computer
+                </div>
+            </div>
+            <div id="system-tray">
+                <span class="tray-icon" title="Volume">🔊</span>
+                <span class="tray-icon" title="Network">📶</span>
+                <span class="tray-icon" title="MSN Messenger">💬</span>
+                <span class="tray-icon" title="Antivirus">🛡️</span>
+                <span id="clock">3:30 PM</span>
+            </div>
+        </div>
+    </div>
+    <!-- Window Template -->
+    <div id="window-template" class="window hidden">
+        <div class="title-bar">
+            <div class="title-bar-text">Whale Info</div>
+            <div class="title-bar-controls">
+                <button aria-label="Minimize"></button>
+                <button aria-label="Maximize"></button>
+                <button aria-label="Close"></button>
+            </div>
+        </div>
+        <div class="window-content"></div>
+    </div>
+    <audio id="background-music" loop>
+        <source src="music/background.mp3" type="audio/mpeg">
+    </audio>
+    <script src="script.js"></script>
+</body>
+</html>
