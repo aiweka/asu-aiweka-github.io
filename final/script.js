@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Global Variables
+  
     let zIndex = 1000;
     const desktop = document.getElementById('desktop');
     const startScreen = document.getElementById('start-screen');
@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let isDragging = false;
     let dragOffset = { x: 0, y: 0 };
 
-    // Original whale content as fallback
+   
     const originalWhaleContent = {
         blue: {
             title: "Blue Whale",
@@ -100,7 +100,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Enhanced getWhaleContent function with API integration
+    // getWhaleContent function 
     async function getWhaleContent(whaleType) {
         const speciesMap = {
             blue: 'blue-whale',
@@ -170,7 +170,7 @@ document.addEventListener('DOMContentLoaded', () => {
         return window;
     }
 
-    // Event listener for whale icons with API integration
+    // Event listener for whale icons 
     document.querySelectorAll('.whale-file').forEach(icon => {
         icon.addEventListener('click', async () => {
             const whaleType = icon.getAttribute('data-whale');
@@ -197,7 +197,7 @@ document.addEventListener('DOMContentLoaded', () => {
         activeWindow = window;
     }
 
-    // Add window controls and dragging
+    
     function addWindowControls(window) {
         const closeButton = window.querySelector('[aria-label="Close"]');
         closeButton.addEventListener('click', () => {
@@ -217,7 +217,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Global mouse event listeners for dragging
+    // Global mouse event 
     document.addEventListener('mousemove', (e) => {
         if (isDragging && activeWindow) {
             const newX = e.clientX - dragOffset.x;
@@ -244,5 +244,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Update clock every minute
     setInterval(updateClock, 60000);
-    updateClock(); // Initial call
+    updateClock(); 
 });
