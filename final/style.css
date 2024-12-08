@@ -1,4 +1,4 @@
-/* Basic reset */
+
 * {
   margin: 0;
   padding: 0;
@@ -7,7 +7,7 @@
 
 body {
   font-family: 'MS Sans Serif', Arial, sans-serif;
-  background-color: #008080;
+  background: linear-gradient(135deg, #20B2AA, #4169E1);
   overflow: hidden;
   height: 100vh;
 }
@@ -44,24 +44,24 @@ body {
 .desktop-icon {
   text-align: center;
   cursor: pointer;
-  width: 60px; /* Reduced from 80px */
-  margin-bottom: 8px; /* Reduced from 10px */
+  width: 60px; 
+  margin-bottom: 8px; 
 }
 
 .system-emoji, .whale-emoji {
-  font-size: 36px; /* Reduced from 48px */
+  font-size: 36px; 
   display: block;
-  margin-bottom: 4px; /* Reduced from 5px */
+  margin-bottom: 4px; 
 }
 
 .desktop-icon span:last-child {
   display: block;
   text-align: center;
   white-space: wrap;
-  font-size: 10px; /* Reduced from 12px */
+  font-size: 10px; 
   color: white;
   text-shadow: 1px 1px 1px black;
-  width: 60px; /* Reduced from 80px to match the icon width */
+  width: 60px; 
   word-wrap: break-word;
 }
 
