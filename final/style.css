@@ -88,7 +88,7 @@ body {
   padding: 2px 8px;
   height: 28px;
   margin: 2px;
-  background: #c0c0c0;
+  background: #df4a4a;
   border: 1px solid #e22b2b;
   border-radius: 2px;
   cursor: pointer;
@@ -248,4 +248,13 @@ body {
   border: 1px solid #000000;
   border-right-color: #ffffff;
   border-bottom-color: #ffffff;
+}
+.api-status {
+  background-color: #4CAF50;
+  color: white;
+  padding: 2px 8px;
+  border-radius: 3px;
+  display: inline-block;
+  font-size: 12px;
+  margin: 5px 0;
 }
