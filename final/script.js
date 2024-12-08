@@ -8,6 +8,71 @@ document.addEventListener('DOMContentLoaded', () => {
     let isDragging = false;
     let dragOffset = { x: 0, y: 0 };
 
+    // Original whale content as fallback
+    const originalWhaleContent = {
+        blue: {
+            title: "Blue Whale",
+            content: `
+                <div class="whale-info">
+                    <h2>Blue Whale (Balaenoptera musculus)</h2>
+                    <h3>Characteristics</h3>
+                    <ul>
+                        <li>Length: Up to 100 feet</li>
+                        <li>Weight: Up to 200 tons</li>
+                        <li>Diet: Primarily krill</li>
+                        <li>Lifespan: 80-90 years</li>
+                    </ul>
+                    <h3>Fun Facts</h3>
+                    <ul>
+                        <li>Largest animal known to have existed</li>
+                        <li>Heart weighs as much as a car</li>
+                        <li>Can make sounds louder than a jet engine</li>
+                    </ul>
+                </div>
+            `
+        },
+        orca: {
+            title: "Orca",
+            content: `
+                <div class="whale-info">
+                    <h2>Orca (Orcinus orca)</h2>
+                    <h3>Characteristics</h3>
+                    <ul>
+                        <li>Length: 23-32 feet</li>
+                        <li>Weight: Up to 22,000 pounds</li>
+                        <li>Diet: Fish, seals, other whales</li>
+                        <li>Lifespan: 50-90 years</li>
+                    </ul>
+                    <h3>Fun Facts</h3>
+                    <ul>
+                        <li>Actually the largest member of the dolphin family</li>
+                        <li>Highly social animals</li>
+                    </ul>
+                </div>
+            `
+        },
+        humpback: {
+            title: "Humpback Whale",
+            content: `
+                <div class="whale-info">
+                    <h2>Humpback Whale (Megaptera novaeangliae)</h2>
+                    <h3>Characteristics</h3>
+                    <ul>
+                        <li>Length: 48-62.5 feet</li>
+                        <li>Weight: 40 tons</li>
+                        <li>Diet: Krill and small fish</li>
+                        <li>Lifespan: 45-50 years</li>
+                    </ul>
+                    <h3>Fun Facts</h3>
+                    <ul>
+                        <li>Known for their complex songs</li>
+                        <li>Great long-distance travelers</li>
+                    </ul>
+                </div>
+            `
+        }
+    };
+
     // Start Screen Handling
     const enterButton = document.getElementById('enter-button');
     
@@ -15,13 +80,69 @@ document.addEventListener('DOMContentLoaded', () => {
         startScreen.style.display = 'none';
         desktop.style.display = 'block';
         desktop.classList.remove('hidden');
-        // Try to play background music
         try {
             backgroundMusic.play().catch(err => console.log('Audio play failed:', err));
         } catch (err) {
             console.log('Audio error:', err);
         }
     });
+
+    // API Functions
+    async function fetchWhaleData(species) {
+        const baseUrl = 'https://www.fishwatch.gov/api/species';
+        try {
+            const response = await fetch(`${baseUrl}/${species}`);
+            const data = await response.json();
+            return data;
+        } catch (error) {
+            console.error('Error fetching whale data:', error);
+            return null;
+        }
+    }
+
+    // Enhanced getWhaleContent function with API integration
+    async function getWhaleContent(whaleType) {
+        const speciesMap = {
+            blue: 'blue-whale',
+            orca: 'killer-whale',
+            humpback: 'humpback-whale'
+        };
+
+        try {
+            const apiData = await fetchWhaleData(speciesMap[whaleType]);
+            
+            if (!apiData) {
+                return originalWhaleContent[whaleType];
+            }
+
+            return {
+                title: apiData.Species_Name || whaleType,
+                content: `
+                    <div class="whale-info">
+                        <h2>${apiData.Species_Name || whaleType}</h2>
+                        <div class="api-status">✓ Live Data</div>
+                        <h3>Scientific Classification</h3>
+                        <ul>
+                            <li>Scientific Name: ${apiData.Scientific_Name || 'Not available'}</li>
+                            <li>Population: ${apiData.Population || 'Data not available'}</li>
+                            <li>Location: ${apiData.Location || 'Data not available'}</li>
+                        </ul>
+                        <h3>Biology</h3>
+                        <ul>
+                            <li>Average Length: ${apiData.Biology?.Average_Length || 'Not available'}</li>
+                            <li>Lifespan: ${apiData.Biology?.Lifespan || 'Not available'}</li>
+                            <li>Diet: ${apiData.Biology?.Prey || 'Not available'}</li>
+                        </ul>
+                        <h3>Conservation Status</h3>
+                        <p>${apiData.Status || 'Status information not available'}</p>
+                    </div>
+                `
+            };
+        } catch (error) {
+            console.error('Error processing whale data:', error);
+            return originalWhaleContent[whaleType];
+        }
+    }
 
     // Create a pop-up window
     function createWindow(title, content) {
@@ -33,12 +154,10 @@ document.addEventListener('DOMContentLoaded', () => {
         window.querySelector('.title-bar-text').textContent = title;
         window.querySelector('.window-content').innerHTML = content;
         
-        // Add close button
         const closeButton = window.querySelector('[aria-label="Close"]');
         closeButton.innerHTML = '✕';
         closeButton.style.cursor = 'pointer';
         
-        // Position window randomly
         const maxX = desktop.clientWidth - 300;
         const maxY = desktop.clientHeight - 200;
         window.style.left = `${Math.random() * maxX}px`;
@@ -51,80 +170,20 @@ document.addEventListener('DOMContentLoaded', () => {
         return window;
     }
 
-    // Whale content for each window
-    function getWhaleContent(whaleType) {
-        const whaleInfo = {
-            blue: {
-                title: "Blue Whale",
-                content: `
-                    <div class="whale-info">
-                        <h2>Blue Whale (Balaenoptera musculus)</h2>
-                        <h3>Characteristics</h3>
-                        <ul>
-                            <li>Length: Up to 100 feet</li>
-                            <li>Weight: Up to 200 tons</li>
-                            <li>Diet: Primarily krill</li>
-                            <li>Lifespan: 80-90 years</li>
-                        </ul>
-                        <h3>Fun Facts</h3>
-                        <ul>
-                            <li>Largest animal known to have existed</li>
-                            <li>Heart weighs as much as a car</li>
-                            <li>Can make sounds louder than a jet engine</li>
-                        </ul>
-                    </div>
-                `
-            },
-            orca: {
-                title: "Orca",
-                content: `
-                    <div class="whale-info">
-                        <h2>Orca (Orcinus orca)</h2>
-                        <h3>Characteristics</h3>
-                        <ul>
-                            <li>Length: 23-32 feet</li>
-                            <li>Weight: Up to 22,000 pounds</li>
-                            <li>Diet: Fish, seals, other whales</li>
-                            <li>Lifespan: 50-90 years</li>
-                        </ul>
-                        <h3>Fun Facts</h3>
-                        <ul>
-                            <li>Actually the largest member of the dolphin family</li>
-                            <li>Highly social animals</li>
-                        </ul>
-                    </div>
-                `
-            },
-            humpback: {
-                title: "Humpback Whale",
-                content: `
-                    <div class="whale-info">
-                        <h2>Humpback Whale (Megaptera novaeangliae)</h2>
-                        <h3>Characteristics</h3>
-                        <ul>
-                            <li>Length: 48-62.5 feet</li>
-                            <li>Weight: 40 tons</li>
-                            <li>Diet: Krill and small fish</li>
-                            <li>Lifespan: 45-50 years</li>
-                        </ul>
-                        <h3>Fun Facts</h3>
-                        <ul>
-                            <li>Known for their complex songs</li>
-                            <li>Great long-distance travelers</li>
-                        </ul>
-                    </div>
-                `
-            }
-        };
-        return whaleInfo[whaleType];
-    }
-
-    // Event listener for each whale icon
+    // Event listener for whale icons with API integration
     document.querySelectorAll('.whale-file').forEach(icon => {
-        icon.addEventListener('click', () => {
+        icon.addEventListener('click', async () => {
             const whaleType = icon.getAttribute('data-whale');
-            const whaleContent = getWhaleContent(whaleType);
-            createWindow(whaleContent.title, whaleContent.content);
+            const loadingWindow = createWindow("Loading...", "<div>Fetching whale data...</div>");
+            
+            try {
+                const whaleContent = await getWhaleContent(whaleType);
+                loadingWindow.querySelector('.title-bar-text').textContent = whaleContent.title;
+                loadingWindow.querySelector('.window-content').innerHTML = whaleContent.content;
+            } catch (error) {
+                loadingWindow.querySelector('.window-content').innerHTML = 
+                    "<div>Error loading whale data. Please try again later.</div>";
+            }
         });
     });
 
@@ -138,7 +197,7 @@ document.addEventListener('DOMContentLoaded', () => {
         activeWindow = window;
     }
 
-    // Add event listeners to window controls and dragging
+    // Add window controls and dragging
     function addWindowControls(window) {
         const closeButton = window.querySelector('[aria-label="Close"]');
         closeButton.addEventListener('click', () => {
